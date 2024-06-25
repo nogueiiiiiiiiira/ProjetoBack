@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+//npx prisma migrate dev
+//prisma db push
+
+model Book {
+  id Int @id @default(autoincrement())
+  nome String
+  descricao String
+  autor String
+  categoria String
+  estoque String
+  classificacaoIdade String
+  criadoEm String
+}
+
+model Librarian {
+  id Int @id @default(autoincrement())
+  nome String
+  cpf String
+  email String @unique
+  telefone String
+  dataNasc String
+  senha String
+  criadoEm String
+}
+
+model Loan {
+  id Int @id @default(autoincrement())
+  cpf String
+  nomeLeitor String
+  idLivro String
+  nomeLivro String
+  dataEmp String
+  dataDev String
+  statusEmp String
+}
+
+model Reader {
+  id Int @id @default(autoincrement())
+  nome String
+  cpf String
+  email String
+  telefone String
+  dataNasc String
+  criadoEm String
+}
+
+model Return {
+  id Int @id @default(autoincrement())
+  cpf String
+  nomeLeitor String
+  idLivro String
+  nomeLivro String
+  prevDev String
+  dataAtual String
+  multaAtribuida String
+}
+
+model Fine {
+  id Int @id @default(autoincrement())
+  cpf String
+  nomeLeitor String
+  idLivro String
+  nomeLivro String
+  diasAtra String
+  total String
+  statusPag String
+  criadoEm String
+}
+
+model Historic {
+  id Int @id @default(autoincrement())
+  acao String
+  criadoEm String
+}
+
+model Mensagem {
+  id Int @id @default(autoincrement())
+  nome String
+  assunto  String
+  mensagem String
+  telefone String
+  statusMensagem String
+  criadoEm String
+}
+
+model Resposta {
+  id Int @id @default(autoincrement())
+  mensagem String
+  assunto String
+  telefoneLeitor String
+  criadoEm String
+}
