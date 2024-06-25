@@ -13,7 +13,7 @@ const {
     addHistoric
 } = require("../service/historicService.js");
 
-const criadoEm = new Date().toISOString().slice(0, 10).split('-').join('/');
+const criadoEm = new Date().toLocaleDateString('pt-BR');
 
 async function getMensagens(req, res) {
     const mensagens = await listMensagens();

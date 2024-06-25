@@ -16,7 +16,7 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
   
   const jwt = require('jsonwebtoken');
-  const criadoEm = new Date().toISOString().slice(0, 10).split('-').join('/');
+  const criadoEm = new Date().toLocaleDateString('pt-BR');  
   const now = new Date().toTimeString().match(/\d{2}:\d{2}:\d{2}/)[0];
   
   async function getRespostas(req, res) {
